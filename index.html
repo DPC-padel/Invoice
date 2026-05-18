@@ -248,9 +248,9 @@
 </head>
 <body>
   <div class="toolbar">
-    <button type="button" onclick="addItemRow()">Add Item Row</button>
-    <button type="button" onclick="removeItemRow()">Remove Item Row</button>
-    <button type="button" onclick="window.print()">Print / Save PDF</button>
+    <button type="button" id="addItemRowBtn">Add Item Row</button>
+    <button type="button" id="removeItemRowBtn">Remove Item Row</button>
+    <button type="button" id="printInvoiceBtn">Print / Save PDF</button>
   </div>
 
   <div class="page">
@@ -511,7 +511,7 @@
   }
 
   document.addEventListener("input", (event) => {
-    if {
+    if (
       event.target.classList.contains("qty") ||
       event.target.classList.contains("unit-price") ||
       event.target.classList.contains("gst-rate") ||
@@ -520,6 +520,10 @@
       recalculateInvoice();
     }
   });
+
+  document.getElementById("addItemRowBtn").addEventListener("click", addItemRow);
+  document.getElementById("removeItemRowBtn").addEventListener("click", removeItemRow);
+  document.getElementById("printInvoiceBtn").addEventListener("click", () => window.print());
 
   updateRowNumbers();
   recalculateInvoice();
